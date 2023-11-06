@@ -242,6 +242,9 @@ public class UpdateSupplierJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if (txtsupplierName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter supplier name to update");
+        }else{
         for(Supplier sup : supplierdirectory.getSupplierList()){
             if(sup.getSupplyName() == supplier.getSupplyName() && sup.getDescription() == supplier.getDescription()){
                 sup.setSupplyName(txtsupplierName.getText());
@@ -256,6 +259,7 @@ public class UpdateSupplierJPanel extends javax.swing.JPanel {
         txtdescription.setEnabled(false);
         btnSave.setEnabled(false);
         btnUpdate.setEnabled(true);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
 private void backAction() {

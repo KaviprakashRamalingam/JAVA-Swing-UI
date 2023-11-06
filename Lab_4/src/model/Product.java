@@ -6,6 +6,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 
 /**
@@ -18,6 +19,7 @@ public class Product {
     private int price;
     private int id;
     private ImageIcon logoImage;
+//    private HashMap<String, Feature> features;
 
     private ArrayList<Feature> features;
     private static int count = 0;
@@ -25,7 +27,7 @@ public class Product {
     public Product() {
         count++;
         id = count;
-        
+//        features = new HashMap<>();
         features = new ArrayList<Feature>();
     }
 
@@ -58,6 +60,16 @@ public class Product {
         this.features = features;
     }
 
+//    public HashMap<String, Feature> getFeatures() {
+//        return features;
+//    }
+//
+//    public void setFeatures(HashMap<String, Feature> features) {
+//        this.features = features;
+//    }
+    
+    
+
     public static int getCount() {
         return count;
     }
@@ -80,7 +92,16 @@ public class Product {
     public String toString() {
         return name;
     }
-
+    
+//        public void addFeature(String featureName, Object featureValue) {
+//        Feature feature = new Feature(featureName, featureValue);
+//        features.put(featureName, feature);
+//    }
+//
+//    public Feature getFeature(String featureName) {
+//        return features.get(featureName);
+//    }
+    
     public Feature addNewFeature() {
         Feature f = new Feature(this);
         features.add(f);

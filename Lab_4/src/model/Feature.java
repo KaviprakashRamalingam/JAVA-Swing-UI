@@ -19,6 +19,7 @@ public class Feature {
     }
     
     public Feature(Product owner, String name, Object value){
+//    public Feature(String name, Object value){
         this.name = name;
         this.value = value;
     }

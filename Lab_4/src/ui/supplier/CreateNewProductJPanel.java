@@ -11,6 +11,7 @@ import ui.admin.ManageSuppliers;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
@@ -82,6 +83,12 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         txtId.setEditable(false);
 
         lblPrice.setText("Product Price:");
+
+        txtPrice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceKeyTyped(evt);
+            }
+        });
 
         btnAdd.setText("Add Product");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +203,9 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        if(txtName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please enter Product name");
+        }else{
         Product product = supplier.getProductCatalog().addProduct();
         product.setName(txtName.getText());
         String stringPrice = txtPrice.getText();
@@ -206,6 +216,7 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         product.setLogoImage(logoImage);
         JOptionPane.showMessageDialog(this, "Product successfully added", "Information", JOptionPane.INFORMATION_MESSAGE);
         backAction();
+        }
 }//GEN-LAST:event_btnAddActionPerformed
     private void backAction() {
         workArea.remove(this);
@@ -246,6 +257,15 @@ public class CreateNewProductJPanel extends javax.swing.JPanel {
         logoImage = null;
         imgLogo.setIcon(logoImage);
     }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void txtPriceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!(Character.isDigit(c) || (c==KeyEvent.VK_BACK_SPACE) || (c==KeyEvent.VK_DELETE)))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtPriceKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
